@@ -4,12 +4,12 @@ import type { NoteTag } from '@/types/note';
 import NotesFilter from './NotesFilter.client';
 
 interface Props {
-  params: Promise<{ tag?: string[] }>;
+  params: Promise<{ slug: string[] }>;
 }
 
 export default async function FilterPage({ params }: Props) {
-  const { tag } = await params;
-  const tagValue = tag?.[0];
+  const { slug } = await params;
+  const tagValue = slug?.[0];
   const filterTag = tagValue === 'all' || !tagValue ? undefined : (tagValue as NoteTag);
 
   const queryClient = new QueryClient();
